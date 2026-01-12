@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
 import warnings
+from typing import List
 # Filter out the specific openpyxl UserWarning
 warnings.filterwarnings("ignore", category=UserWarning, module='openpyxl')
 
-import pprint
+from pprint import pprint
 
 class Workday_Schedule:
     first_col_name: str = "start"
@@ -25,8 +26,16 @@ class Workday_Schedule:
             except KeyError:
                 print(col_name, "does not exist, skipping")
         return self(df)
+    
+    def __getitem__(self, key: List[str]):
+        return self.schedule_data[key]
 
-    def clean_excel(self, df: pd.DataFrame = None):
+    # returns list like structure
+    def get_column_names(self):
+        return self.schedule_data.columns
+        
+
+    def clean_data(self, df: pd.DataFrame = None) -> None:
         # has to be a better way to do that right
         if df is None:
             df = self.schedule_data
@@ -54,7 +63,8 @@ class Workday_Schedule:
 
 workday_s = Workday_Schedule.read_workday_excel("View_My_Courses.xlsx", 2)
 
-workday_s.clean_excel()
+workday_s.clean_data()
 
-pprint.pprint(workday_s.get_list_of_row(4))
-
+pprint(workday_s.get_list_of_row(4))
+pprint(workday_s[['section']])
+print(workday_s.get_column_names())

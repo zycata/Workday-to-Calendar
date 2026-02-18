@@ -19,16 +19,11 @@ class Workday_Schedule:
         self.clean_data()
         pass
 
-    @classmethod
-    def read_workday_excel(cls, file_path:str, skip_rows: int = 2):
-        df: pd.DataFrame = pd.read_excel(file_path, skiprows=skip_rows)
-        df.columns = df.columns.str.lower()
-        df.columns.values[0] = cls.first_col_name
-        for col_name in cls.cols_to_drop:
-            try:
-                df = df.drop(col_name, axis=1)
-            except KeyError:
-                print(col_name, "does not exist, skipping")
+    @classmethod 
+    # dont type hint file_path
+    def read_workday_excel(cls, xlsx_file, skip_rows: int = 2):
+        df: pd.DataFrame = pd.read_excel(xlsx_file, skiprows=skip_rows)
+        
         return cls(df)
     
     def __getitem__(self, key: List[str]):
@@ -45,6 +40,13 @@ class Workday_Schedule:
         # has to be a better way to do that right
         
         df = self.schedule_data
+        df.columns = df.columns.str.lower()
+        df.columns.values[0] = self.first_col_name
+        for col_name in self.cols_to_drop:
+            try:
+                df = df.drop(col_name, axis=1)
+            except KeyError:
+                print(col_name, "does not exist, skipping")
         # this code is so bad that ai could never
         df["course listing"] = df["course listing"].apply(lambda s: s.split(" - ")[0])
         # only keep registered classes
@@ -96,6 +98,11 @@ class Workday_Schedule:
             instructor=data_row['instructor'],
             meeting_times=data_row['meeting patterns']
         )
+    def get_courses(self) -> List[Course_Info]:
+        all_courses = []
+        for i in range(len(self.schedule_data)):
+            all_courses.append(self.row_to_course_info(i))
+        return all_courses
 
 
 

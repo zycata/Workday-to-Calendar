@@ -1,0 +1,21 @@
+# Ignore the frontend entirely
+frontend/
+
+# Ignore Python clutter
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+
+# Ignore local environment secrets
+.env
+
+# Ignore git metadata
+.git
+.gitignore
+
+# Ignore Docker files
+Dockerfile
+docker-compose.yml

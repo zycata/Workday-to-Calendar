@@ -11,7 +11,7 @@ So I decided to create one myself (mainly to teach myself apis n stuff)
 - returns the .ics file to the browser (or an error) 
 - Will most likely be hosted on google cloud or vercel with a docker image
 
-### How to run Frontend
+### How to run Frontend in development
 ```bash
 cd frontend
 npm install 
@@ -20,8 +20,9 @@ npm run dev
 
 ```
 
-### Backend setup
+### Backend setup in development
 ```bash
+# assuming in project root
 pip install backend/requirements.txt 
 # if your on linux 
 pip install gunicorn
@@ -29,13 +30,13 @@ pip install gunicorn
 gunicorn -w 4 -b "0.0.0.0:5100" backend.api:app
 
 # if you're own windows
-python backend/api.py
+python -m backend.api
 ```
 
 Alternatively, you may also run `./wsl_env.sh` on linux to do a semi-automated install (follow instructions)
 
 ### Docker
-You can use docker to build a docker image
+You can use docker to build a docker image and run it through a docker container (recommended)
 
 ```bash
 docker build -t workday-app .

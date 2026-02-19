@@ -7,6 +7,7 @@
 *.pyo
 *.pyd
 .venv/
+.venv_wsl/
 env/
 
 # Ignore local environment secrets

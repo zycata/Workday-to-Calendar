@@ -6,9 +6,7 @@ from typing import List, NamedTuple
 warnings.filterwarnings("ignore", category=UserWarning, module='openpyxl')
 
 # course info file
-from src.courseinfo import Course_Info
-
-from pprint import pprint
+from backend.courseinfo import Course_Info
 
 class Workday_Schedule:
     first_col_name: str = "start"

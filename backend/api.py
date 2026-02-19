@@ -1,12 +1,20 @@
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file, jsonify, send_from_directory
 from flask_cors import CORS
-import io
-import src.converter as conv
+import io, os
+import backend.converter as conv
 
 import random
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
 CORS(app)
+
+@app.route('/')
+def serve():
+    if not app.static_folder:
+        return "Static folder not configured", 500
+        
+    return send_from_directory(app.static_folder, 'index.html')
+
 @app.route('/get-word')
 def get_word():
     return jsonify({"word": random.choice(["Apple", "Banana", "67"])})
@@ -35,6 +43,11 @@ def convert_ics():
     except Exception as e:
         return "Unknown error occured with server", 500
 
+@app.errorhandler(404)
+def not_found(e):
+    if not app.static_folder:
+        return "Static folder not configured", 500
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == "__main__":
     # This is exactly what you wanted

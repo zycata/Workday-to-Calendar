@@ -33,3 +33,11 @@ python backend/api.py
 ```
 
 Alternatively, you may also run `./wsl_env.sh` on linux to do a semi-automated install (follow instructions)
+
+### Docker
+You can use docker to build a docker image
+
+```bash
+docker build -t workday-app .
+docker run -p 5100:5100 workday-app
+```

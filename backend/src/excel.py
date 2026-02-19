@@ -6,7 +6,7 @@ from typing import List, NamedTuple
 warnings.filterwarnings("ignore", category=UserWarning, module='openpyxl')
 
 # course info file
-from courseinfo import Course_Info
+from src.courseinfo import Course_Info
 
 from pprint import pprint
 
@@ -107,16 +107,3 @@ class Workday_Schedule:
 
 
 
-
-workday_s = Workday_Schedule.read_workday_excel("View_My_Courses.xlsx", 2)
-
-'''
-pprint(workday_s.get_list_of_row(4))
-pprint(workday_s[['section']])
-print(workday_s.get_column_names())'''
-print(workday_s.row_to_course_info(0)) 
-
-
-while True:
-    x = input("Enter column input:\n")
-    pprint(workday_s[[x]])

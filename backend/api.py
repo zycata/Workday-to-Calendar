@@ -1,6 +1,8 @@
 from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
 import io
+import src.converter as conv
+
 import random
 
 app = Flask(__name__)
@@ -18,14 +20,21 @@ def convert_ics():
     
     if file.filename == '':
         return "No selected file", 400
-    file_content = file.read()
+    try:
+        cal = conv.convert_xlsx_to_ics(file)
+        return send_file(
+            io.BytesIO(cal),
+            mimetype='text/calendar',
+            as_attachment=True,
+            download_name='schedule.ics'
+        )
+    except TypeError as e:
+        return "Error parsing excel file", 400
+    except ValueError as e:
+        return "Error converting excel file to ics", 400
+    except Exception as e:
+        return "Unknown error occured with server", 500
 
-    return send_file(
-        io.BytesIO(file_content),
-        mimetype='text/calendar',
-        as_attachment=True,
-        download_name='converted.ics'
-    )
 
 if __name__ == "__main__":
     # This is exactly what you wanted

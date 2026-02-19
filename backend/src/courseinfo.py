@@ -26,7 +26,9 @@ class ScheduleMaker:
         parts = [p.strip() for p in pattern_string.split('|')]
         
         date_part = parts[0].split(' - ')
-        end_date = datetime.strptime(date_part[1], "%Y-%m-%d")
+
+        # make it the last minute of the day
+        end_date = datetime.strptime(date_part[1], "%Y-%m-%d").replace(hour=23, minute=59, second=59)
 
         weekdays = parts[1].split()
         
@@ -50,10 +52,9 @@ class ScheduleMaker:
         event.add('summary', summary)
         event.add('description', desc)
         event.add('location', location)
-
         event.add('dtstart', start_time)
         event.add('dtend', end_time)
-        
+
         event.add('rrule', {
             'freq': 'weekly',
             'byday': week_days,
@@ -65,7 +66,7 @@ class ScheduleMaker:
         meeting_days = course.meeting_times.split("\n\n")
         for meets in meeting_days:
             end_date, first_start, first_end, location, weekdays = self.parse_meeting_pattern(meets)
-            desc = course.section + "\nInstructor: " + course.instructor
+            desc = ''.join([str(course.section), "\nInstructor: ", str(course.instructor)])
             weekdays = self.format_weekdays(weekdays)
             self.add_recurring_event(
                 summary=course.name, 
@@ -75,8 +76,13 @@ class ScheduleMaker:
                 start_time=first_start, 
                 end_time=first_end, 
                 end_date=end_date)
+    def add_all_courses(self, courses: List[Course_Info]):
+        for c in courses:
+            self.add_course(c)
         
-    def save_ics(self, ics_name):
+    def write_ics(self, ics_name):
         with open(ics_name, 'wb') as f:
             f.write(self.__cal__.to_ical())
     
+    def get_ics_content(self):
+        return self.__cal__.to_ical()

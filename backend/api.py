@@ -9,7 +9,7 @@ CORS(app)
 def get_word():
     return jsonify({"word": random.choice(["Apple", "Banana", "67"])})
 
-@app.route('/convert-ics', methods=['POST'])
+@app.route('/convert-ics', methods=['POST', 'GET'])
 def convert_ics():
     if 'file' not in request.files:
         return "Missing file part", 400

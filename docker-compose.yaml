@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5100:5100"
+    volumes:
+      - ./backend:/app # Syncs code so you don't have to rebuild on every change
+    environment:
+      - FLASK_ENV=development
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80" # Maps local port 3000 to container port 80
+    depends_on:
+      - backend

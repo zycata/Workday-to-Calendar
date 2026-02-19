@@ -1,5 +1,5 @@
-# Ignore the frontend entirely
-frontend/
+# ignore node_modules
+**/node_modules/
 
 # Ignore Python clutter
 **/__pycache__/

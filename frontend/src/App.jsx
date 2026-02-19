@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 import RandomWordButton from "./components/RandomWordButton";
+import Excel_Form from "./components/Excel_Form";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -25,10 +26,7 @@ function App() {
             </div>
 
             <div>
-                <form id="uploadForm" onSubmit={handleFormSubmit}>
-                    <input id="fileInput" type="file" name="file" />
-                    <button type="submit">Submit File</button>
-                </form>
+                <Excel_Form/>
             </div>
 
             <p>

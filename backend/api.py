@@ -10,6 +10,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 dist_path = os.path.join(current_dir, "..", "frontend", "dist")
 
 app = Flask(__name__, static_folder=dist_path, static_url_path='/')
+CORS(app)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

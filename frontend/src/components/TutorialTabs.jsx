@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './TutorialTabs.css';
 
 import workday_guide from '../assets/workday-download-guide.pdf'
-import sample_pdf from '../assets/sample_pdf.pdf'
+import upload_guide from '../assets/google-calendar-upload-guide.pdf'
 function TutorialTabs() {
   const [activeTab, setActiveTab] = useState('tab1');
 
@@ -30,7 +30,7 @@ function TutorialTabs() {
           <embed className="pdf-embed" src={workday_guide} type="application/pdf" />
         )}
         {activeTab === 'tab2' && (
-          <embed className="pdf-embed" src={sample_pdf} type="application/pdf" />
+          <embed className="pdf-embed" src={upload_guide} type="application/pdf" />
         )}
       </div>
     </div>

@@ -4,15 +4,21 @@ import io, os
 import backend.converter as conv
 
 import random
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
-CORS(app)
+# This points to /app/frontend/dist
+dist_path = os.path.join(current_dir, "..", "frontend", "dist")
 
-@app.route('/')
-def serve():
+app = Flask(__name__, static_folder=dist_path, static_url_path='/')
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
     if not app.static_folder:
         return "Static folder not configured", 500
-        
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/get-word')
@@ -48,6 +54,7 @@ def not_found(e):
     if not app.static_folder:
         return "Static folder not configured", 500
     return send_from_directory(app.static_folder, 'index.html')
+
 
 if __name__ == "__main__":
     # This is exactly what you wanted

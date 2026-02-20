@@ -23,4 +23,4 @@ ENV PYTHONPATH=/app
 EXPOSE 5100
 
 # Start Gunicorn
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5100", "backend.api:app"]
+CMD ["gunicorn", "-w", "1", "-b", "0.0.0.0:5100", "backend.api:app"]

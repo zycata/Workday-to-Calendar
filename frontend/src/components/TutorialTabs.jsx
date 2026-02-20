@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import './TutorialTabs.css';
+
+import workday_guide from '../assets/workday-download-guide.pdf'
+import sample_pdf from '../assets/sample_pdf.pdf'
 function TutorialTabs() {
   const [activeTab, setActiveTab] = useState('tab1');
 
@@ -24,10 +27,10 @@ function TutorialTabs() {
       {/* 2. The Content Area */}
       <div className="tab-content">
         {activeTab === 'tab1' && (
-          <embed className="pdf-embed" src="/workday-download-guide.pdf" type="application/pdf" />
+          <embed className="pdf-embed" src={workday_guide} type="application/pdf" />
         )}
         {activeTab === 'tab2' && (
-          <embed className="pdf-embed" src="/sample_pdf.pdf" type="application/pdf" />
+          <embed className="pdf-embed" src={sample_pdf} type="application/pdf" />
         )}
       </div>
     </div>

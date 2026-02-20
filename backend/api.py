@@ -2,8 +2,8 @@ from flask import Flask, request, send_file, jsonify, send_from_directory
 from flask_cors import CORS
 import io, os
 import backend.converter as conv
+from backend.hope import retrieve_quote
 
-import random
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # This points to /app/frontend/dist
@@ -23,7 +23,7 @@ def serve(path):
 
 @app.route('/get-word')
 def get_word():
-    return jsonify({"word": random.choice(["Apple", "Banana", "67"])})
+    return jsonify({"word": retrieve_quote()})
 
 @app.route('/convert-ics', methods=['POST', 'GET'])
 def convert_ics():

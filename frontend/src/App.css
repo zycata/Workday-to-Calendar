@@ -22,9 +22,20 @@ a.footer-link:visited {
 
 }
 
+/* Main Content Flex Column to allow children to grow */
 .main-content {
     padding: 1em;
-    flex: 1; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper around TutorialTabs in App.jsx */
+.pdf-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px; /* Ensure at least some height */
 }
 
 .spacing > * {
@@ -42,19 +53,33 @@ embed {
   display: block;
 }
 
+.pdf-embed {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  border: none;
+}
+
 .tabs-wrapper {
-  max-width: 900px;
-  margin: 2rem auto;
+  /* Remove max-width/margins to allow full expansion, or keep if desired. 
+     User said "expand to all available space". */
+  width: 100%;
+  max-width: 100%; 
+  margin: 1em 0; /* Adjust margin */
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Grow to fill pdf-wrapper */
 }
 
 .tab-buttons {
   display: flex;
   background: #f5f5f5;
   border-bottom: 1px solid #ddd;
+  flex-shrink: 0; /* Don't shrink buttons */
 }
 
 .tab-buttons button {
@@ -75,6 +100,10 @@ embed {
 }
 
 .tab-content {
-  padding: 0; /* Let the PDF fill the box */
-  height: 600px;
+  padding: 0; 
+  flex: 1; /* Fill remaining space in tabs-wrapper */
+  display: flex;
+  flex-direction: column;
+  /* height: 600px;  Removed fixed height */
+  height: 100%;
 }

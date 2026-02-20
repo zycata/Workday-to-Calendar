@@ -1,8 +1,8 @@
 import { useState } from "react";
-
+import './interactive_parts.css';
 function RandomWordButton() {
     const [loading, setLoading] = useState(false);
-    const [word, setWord] = useState("Click to start...");
+    const [word, setWord] = useState("Click this for words of encouragement!");
 
     const fetchWord = async () => {
         setLoading(true); 
@@ -19,9 +19,9 @@ function RandomWordButton() {
     };
 
     return (
-        <button onClick={fetchWord} disabled={loading} >
-            {loading ? "Fetching..." : `Current word: ${word}`}
-        </button>
+        <h3 onClick={fetchWord} disabled={loading} className="prevent-select fun-text">
+            {loading ? "Fetching..." : `${word}`}
+        </h3>
     );
 }
 

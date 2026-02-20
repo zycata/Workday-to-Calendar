@@ -10,7 +10,6 @@ function App() {
         /* Use a div or main instead of a fragment so Flexbox can see it as one block */
         <div className="app-container">
             <main className="main-content spacing">
-                
                 <h1> Ubc Workday Excel To ICalendar Converter</h1>
                 <p>
                     {" "}
@@ -18,11 +17,11 @@ function App() {
                     themselves?{" "}
                 </p>
 
-                <RandomWordButton />
-
                 <Excel_Form />
-                <div className="pdf-wrapper"><TutorialTabs /></div>
-                
+                <RandomWordButton />
+                <div className="pdf-wrapper">
+                    <TutorialTabs />
+                </div>
             </main>
 
             <footer className="footer">

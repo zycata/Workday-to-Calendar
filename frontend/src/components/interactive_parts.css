@@ -1,0 +1,35 @@
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.browse-button {
+  cursor: pointer;
+  outline: none;
+  font-size: 1.2em;
+}
+
+.convert-button {
+  margin-top: 1em;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.2em;
+  padding: 0.1em;
+}
+
+
+
+/* parts of css for randomwrodbutton */ 
+/* Why am I not making a new css file? idk.*/
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.fun-text {
+  cursor: pointer;
+}

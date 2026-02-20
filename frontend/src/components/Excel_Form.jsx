@@ -1,3 +1,5 @@
+import "./interactive_parts.css";
+
 function Excel_Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,11 +23,11 @@ function Excel_Form() {
                 const url = window.URL.createObjectURL(result);
                 const a = document.createElement("a");
                 a.href = url;
-                a.download = "my_schedule.ics"; 
+                a.download = "my_schedule.ics";
                 document.body.appendChild(a);
-                a.click(); 
-                a.remove(); 
-                window.URL.revokeObjectURL(url); 
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
             } else {
                 const errorText = await response.text();
                 alert("Error: " + errorText);
@@ -36,9 +38,17 @@ function Excel_Form() {
         }
     };
     return (
-        <form id="uploadForm" onSubmit={handleSubmit}>
-            <input id="fileInput" type="file" name="file" />
-            <button type="submit">Convert File</button>
+        <form id="uploadForm" onSubmit={handleSubmit} className="submit-form">
+            <input
+                id="fileInput"
+                accept=".xlsx"
+                type="file"
+                name="file"
+                className="browse-button"
+            />
+            <button type="submit" className="convert-button">
+                Convert File
+            </button>
         </form>
     );
 }

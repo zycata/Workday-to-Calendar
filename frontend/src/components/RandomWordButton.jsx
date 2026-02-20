@@ -19,7 +19,7 @@ function RandomWordButton() {
     };
 
     return (
-        <button onClick={fetchWord} disabled={loading}>
+        <button onClick={fetchWord} disabled={loading} >
             {loading ? "Fetching..." : `Current word: ${word}`}
         </button>
     );

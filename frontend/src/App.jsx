@@ -11,7 +11,7 @@ function App() {
         <div className="app-container">
             <main className="main-content spacing">
                 
-                <h1> Ubc Workday Excel to ICalendar converter</h1>
+                <h1> Ubc Workday Excel To ICalendar Converter</h1>
                 <p>
                     {" "}
                     Really? Ubc or Workday couldn't have done it

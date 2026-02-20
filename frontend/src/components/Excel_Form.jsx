@@ -6,7 +6,7 @@ function Excel_Form() {
         if (!fileInput.files[0]) return alert("Please select a file first");
         let file_name = fileInput.files[0].name;
         if (!file_name.endsWith(".xlsx"))
-            return alert("Please upload an excel file");
+            return alert("Please upload an excel file (.xlsx)");
         const formData = new FormData();
         formData.append("file", fileInput.files[0]);
 
@@ -32,6 +32,7 @@ function Excel_Form() {
             }
         } catch (error) {
             console.error("Error:", error);
+            alert("An error occured");
         }
     };
     return (

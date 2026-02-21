@@ -29,7 +29,7 @@ function App() {
                     Check out the source code on{" "}
                     <a
                         className="footer-link"
-                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        href="https://github.com/zycata/Workday-to-Calendar"
                         target="_blank"
                         rel="noreferrer noopener"
                     >

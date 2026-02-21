@@ -1,5 +1,6 @@
 .venv/
 .venv_wsl/
+.venv_l/
 **/__pycache__/
 *.xlsx
 *.ics

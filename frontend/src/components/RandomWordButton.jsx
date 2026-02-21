@@ -7,7 +7,7 @@ function RandomWordButton() {
     const fetchWord = async () => {
         setLoading(true); 
         try {
-            const response = await fetch("http://127.0.0.1:5100/get-word");
+            const response = await fetch("/get-word");
             const data = await response.json();
             setWord(data.word);
         } catch (error) {

@@ -1,7 +1,7 @@
 footer {
   background-color: #1b5491; /* UBC Blue */
   color: white;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 a.footer-link:link {
@@ -40,6 +40,6 @@ a.footer-link:visited {
 }
 
 .spacing > * {
-  margin: 0.8em;
+  margin: 0.5em;
 }
 

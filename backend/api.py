@@ -2,7 +2,7 @@ from flask import Flask, request, send_file, jsonify, send_from_directory
 from flask_cors import CORS
 import io, os
 import backend.converter as conv
-from backend.hope import retrieve_quote
+from backend.src.hope import retrieve_quote
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 

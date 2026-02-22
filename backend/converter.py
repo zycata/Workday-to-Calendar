@@ -16,7 +16,9 @@ return any errs if errors occur
 
 
 '''
-from . import courseinfo, excel
+from backend.src import courseinfo
+
+from backend.src import excel
 def parse_excel(file):
     try:
         Workday_s = excel.Workday_Schedule.read_workday_excel(file)

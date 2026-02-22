@@ -22,6 +22,10 @@ def serve(path):
     
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.route('/robots.txt')
+def static_from_root():
+    return send_from_directory(app.static_folder, 'robots.txt')
+
 @app.route('/get-word')
 def get_word():
     return jsonify({"word": retrieve_quote()})

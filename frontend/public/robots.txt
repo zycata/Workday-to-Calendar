@@ -1,0 +1,4 @@
+# Allow all search engines to crawl the whole site
+User-agent: *
+Allow: /
+

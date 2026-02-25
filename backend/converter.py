@@ -46,7 +46,7 @@ if __name__ == "__main__":
      
     argc = len(sys.argv)
     if argc < 3:
-        sys.exit(f"Not enough arguments, commandline usage: python {sys.argv[0]} [input excel] [output ics]")
+        sys.exit(f"Not enough arguments, commandline usage:\npython -m backend.converter [input excel] [output ics]")
     courses = parse_excel(sys.argv[1])
     scheduler = courseinfo.ScheduleMaker()
     scheduler.add_all_courses(courses)

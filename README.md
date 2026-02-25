@@ -22,13 +22,13 @@ npm run build
 # if no errors occur, you are good to go!
 ```
 
-### Backend setup in development
+### BSetting up the rest of the application
 ```bash
 # assuming in project root
 pip install backend/requirements.txt 
 # run the entire application
 python -m backend.api
-# will run on http://127.0.0.1:5100
+# will run on http://127.0.0.1:5100 by default 
 
 # if your on linux, you can run using gunicorn instead
 pip install gunicorn

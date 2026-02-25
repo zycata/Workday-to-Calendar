@@ -16,6 +16,7 @@ return any errs if errors occur
 
 
 '''
+import sys
 from backend.src import courseinfo
 
 from backend.src import excel
@@ -42,7 +43,7 @@ def convert_xlsx_to_ics(file):
 
 # woahhhh extra functionality as a command line utility??? WHAttt???
 if __name__ == "__main__":
-    import sys 
+     
     argc = len(sys.argv)
     if argc < 3:
         sys.exit(f"Not enough arguments, commandline usage: python {sys.argv[0]} [input excel] [output ics]")

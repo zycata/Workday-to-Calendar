@@ -38,6 +38,7 @@ class Workday_Schedule:
         # has to be a better way to do that right
         
         df = self.schedule_data
+        # df.map(str) yall this was not the way to go
         df.columns = df.columns.str.lower()
         df.columns.values[0] = self.first_col_name
         for col_name in self.cols_to_drop:
@@ -50,19 +51,6 @@ class Workday_Schedule:
         # only keep registered classes
         df = df[df['registration status'] == 'Registered']
 
-    def get_list_of_row(self, row_num: int) -> list:
-        dataframe = self.schedule_data
-        list = []
-        data_row = dataframe.iloc[row_num]
-        # print("-------print col info--------")
-        for name, datapoint in data_row.items():
-            # print(f"{name} :  {datapoint}")
-            if (datapoint is np.nan):
-                # print("is nan omg")
-                list.append("n/a")
-            else:
-                list.append(datapoint)
-        return list
     
     def parse_meetings(self, meetings):
         meetings = meetings.split("\n")

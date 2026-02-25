@@ -22,7 +22,7 @@ npm run build
 # if no errors occur, you are good to go!
 ```
 
-### BSetting up the rest of the application
+### Setting up the rest of the application
 ```bash
 # assuming in project root
 pip install backend/requirements.txt 
